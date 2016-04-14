@@ -33,6 +33,7 @@ import org.gwtbootstrap3.extras.slider.client.ui.base.constants.HandleType;
 import org.gwtbootstrap3.extras.slider.client.ui.base.constants.OrientationType;
 import org.gwtbootstrap3.extras.slider.client.ui.base.constants.ScaleType;
 import org.gwtbootstrap3.extras.slider.client.ui.base.constants.SelectionType;
+import org.gwtbootstrap3.extras.slider.client.ui.base.constants.TooltipPosition;
 import org.gwtbootstrap3.extras.slider.client.ui.base.constants.TooltipType;
 import org.gwtbootstrap3.extras.slider.client.ui.base.event.HasAllSlideHandlers;
 import org.gwtbootstrap3.extras.slider.client.ui.base.event.SlideDisabledEvent;
@@ -246,6 +247,22 @@ public abstract class SliderBase<T> extends Widget implements
         updateSlider(SliderOption.TOOLTIP_SPLIT, tooltipSplit);
     }
 
+    public TooltipPosition getTooltipPosition() {
+        TooltipPosition defaultPosition = getOrientation() == OrientationType.HORIZONTAL ?
+                TooltipPosition.TOP : TooltipPosition.RIGHT;
+        return getEnumAttribute(SliderOption.TOOLTIP_POSITION, TooltipPosition.class, defaultPosition);
+    }
+
+    /**
+     * Sets the tool-tip position.
+     *
+     * @param position
+     * @see TooltipPosition
+     */
+    public void setTooltipPosition(final TooltipPosition position) {
+        updateSlider(SliderOption.TOOLTIP_POSITION, position.getPosition());
+    }
+
     public HandleType getHandle() {
         return getEnumAttribute(SliderOption.HANDLE, HandleType.class, HandleType.ROUND);
     }
@@ -317,17 +334,17 @@ public abstract class SliderBase<T> extends Widget implements
     protected String formatTooltip(final T value) {
         if (formatterCallback != null)
             return formatterCallback.formatTooltip(value);
-        return convertToString(value);
+        return format(value);
     }
 
     /**
-     * Converts the slider value to string value to be displayed
+     * Formats the slider value to string value to be displayed
      * as tool-tip text.
      *
      * @param value
      * @return
      */
-    protected abstract String convertToString(final T value);
+    protected abstract String format(final T value);
 
     public boolean isNaturalArrowKeys() {
         return getBooleanAttribute(SliderOption.NATURAL_ARROW_KEYS, false);
@@ -414,6 +431,7 @@ public abstract class SliderBase<T> extends Widget implements
     /**
      * Focus the appropriate slider handle after a value change.
      * Defaults to false.
+     *
      * @param focus
      */
     public void setFocusHandle(final boolean focus) {
@@ -437,22 +455,16 @@ public abstract class SliderBase<T> extends Widget implements
     @Override
     public void setVisible(final boolean visible) {
         if (isAttached()) {
-            Element elem = getElement().getPreviousSiblingElement();
-            if (elem != null) {
-                setVisible(elem, visible);
-                return;
-            }
+            setVisible(getElement(getElement()), visible);
+        } else {
+            super.setVisible(visible);
         }
-        super.setVisible(visible);
     }
 
     @Override
     public boolean isVisible() {
         if (isAttached()) {
-            Element elem = getElement().getPreviousSiblingElement();
-            if (elem != null) {
-                return isVisible(elem);
-            }
+            return isVisible(getElement(getElement()));
         }
         return isVisible();
     }
@@ -524,6 +536,15 @@ public abstract class SliderBase<T> extends Widget implements
      * @return
      */
     protected abstract T convertValue(String value);
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public com.google.gwt.user.client.Element getStyleElement() {
+        if (isAttached()) {
+            return (com.google.gwt.user.client.Element) getElement(getElement());
+        }
+        return super.getStyleElement();
+    }
 
     /**
      * Toggles the slider between enabled and disabled.
@@ -860,7 +881,7 @@ public abstract class SliderBase<T> extends Widget implements
 
     /**
      * FIXME: This is a workaround for the refresh command, since it is buggy in
-     * the current version (4.5.6). After executing this command, the slider
+     * the current version (7.0.1). After executing this command, the slider
      * becomes consistently a range slider with 2 handles. This should be
      * removed once the bug is fixed in a future version.
      *
@@ -877,6 +898,10 @@ public abstract class SliderBase<T> extends Widget implements
 
     private native void sliderCommand(Element e, String cmd) /*-{
         $wnd.jQuery(e).slider(cmd);
+    }-*/;
+
+    private native Element getElement(Element e) /*-{
+        return $wnd.jQuery(e).slider(@org.gwtbootstrap3.extras.slider.client.ui.base.SliderCommand::GET_ELEMENT);
     }-*/;
 
     private native void setAttribute(Element e, String attr, String value) /*-{

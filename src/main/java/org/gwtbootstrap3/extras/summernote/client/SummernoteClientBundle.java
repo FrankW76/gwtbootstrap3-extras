@@ -4,7 +4,7 @@ package org.gwtbootstrap3.extras.summernote.client;
  * #%L
  * GwtBootstrap3
  * %%
- * Copyright (C) 2013 - 2015 GwtBootstrap3
+ * Copyright (C) 2013 - 2016 GwtBootstrap3
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,115 +30,117 @@ import com.google.gwt.resources.client.TextResource;
 public interface SummernoteClientBundle extends ClientBundle {
 
     public static final SummernoteClientBundle INSTANCE = GWT.create(SummernoteClientBundle.class);
+    static final String VERSION = "0.8.1";
+    static final String LOCALE_DIR = "resource/js/locales.cache." + VERSION + "/";
 
-    @Source("resources/js/summernote-0.6.16.min.cache.js")
+    @Source("resource/js/summernote-" + VERSION + ".min.cache.js")
     TextResource summernote();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-ar-AR.js")
+    @Source(LOCALE_DIR + "summernote-ar-AR.js")
     TextResource ar_AR();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-bg-BG.js")
+    @Source(LOCALE_DIR + "summernote-bg-BG.js")
     TextResource bg_BG();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-ca-ES.js")
+    @Source(LOCALE_DIR + "summernote-ca-ES.js")
     TextResource ca_ES();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-cs-CZ.js")
+    @Source(LOCALE_DIR + "summernote-cs-CZ.js")
     TextResource cs_CZ();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-da-DK.js")
+    @Source(LOCALE_DIR + "summernote-da-DK.js")
     TextResource da_DK();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-de-DE.js")
+    @Source(LOCALE_DIR + "summernote-de-DE.js")
     TextResource de_DE();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-es-ES.js")
+    @Source(LOCALE_DIR + "summernote-es-ES.js")
     TextResource es_ES();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-es-EU.js")
+    @Source(LOCALE_DIR + "summernote-es-EU.js")
     TextResource es_EU();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-fa-IR.js")
+    @Source(LOCALE_DIR + "summernote-fa-IR.js")
     TextResource fa_IR();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-fi-FI.js")
+    @Source(LOCALE_DIR + "summernote-fi-FI.js")
     TextResource fi_FI();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-fr-FR.js")
+    @Source(LOCALE_DIR + "summernote-fr-FR.js")
     TextResource fr_FR();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-he-IL.js")
+    @Source(LOCALE_DIR + "summernote-he-IL.js")
     TextResource he_IL();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-hu-HU.js")
+    @Source(LOCALE_DIR + "summernote-hu-HU.js")
     TextResource hu_HU();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-id-ID.js")
+    @Source(LOCALE_DIR + "summernote-id-ID.js")
     TextResource id_ID();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-it-IT.js")
+    @Source(LOCALE_DIR + "summernote-it-IT.js")
     TextResource it_IT();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-ja-JP.js")
+    @Source(LOCALE_DIR + "summernote-ja-JP.js")
     TextResource ja_JP();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-ko-KR.js")
+    @Source(LOCALE_DIR + "summernote-ko-KR.js")
     TextResource ko_KR();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-lt-LT.js")
+    @Source(LOCALE_DIR + "summernote-lt-LT.js")
     TextResource lt_LT();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-nb-NO.js")
+    @Source(LOCALE_DIR + "summernote-nb-NO.js")
     TextResource nb_NO();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-nl-NL.js")
+    @Source(LOCALE_DIR + "summernote-nl-NL.js")
     TextResource nl_NL();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-pl-PL.js")
+    @Source(LOCALE_DIR + "summernote-pl-PL.js")
     TextResource pl_PL();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-pt-BR.js")
+    @Source(LOCALE_DIR + "summernote-pt-BR.js")
     TextResource pt_BR();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-pt-PT.js")
+    @Source(LOCALE_DIR + "summernote-pt-PT.js")
     TextResource pt_PT();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-ro-RO.js")
+    @Source(LOCALE_DIR + "summernote-ro-RO.js")
     TextResource ro_RO();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-ru-RU.js")
+    @Source(LOCALE_DIR + "summernote-ru-RU.js")
     TextResource ru_RU();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-sk-SK.js")
+    @Source(LOCALE_DIR + "summernote-sk-SK.js")
     TextResource sk_SK();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-sl-SI.js")
+    @Source(LOCALE_DIR + "summernote-sl-SI.js")
     TextResource sl_SI();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-sr-RS.js")
+    @Source(LOCALE_DIR + "summernote-sr-RS.js")
     TextResource sr_RS();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-sr-RS-Latin.js")
+    @Source(LOCALE_DIR + "summernote-sr-RS-Latin.js")
     TextResource sr_RS_Latin();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-sv-SE.js")
+    @Source(LOCALE_DIR + "summernote-sv-SE.js")
     TextResource sv_SE();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-th-TH.js")
+    @Source(LOCALE_DIR + "summernote-th-TH.js")
     TextResource th_TH();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-tr-TR.js")
+    @Source(LOCALE_DIR + "summernote-tr-TR.js")
     TextResource tr_TR();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-uk-UA.js")
+    @Source(LOCALE_DIR + "summernote-uk-UA.js")
     TextResource uk_UA();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-vi-VN.js")
+    @Source(LOCALE_DIR + "summernote-vi-VN.js")
     TextResource vi_VN();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-zh-CN.js")
+    @Source(LOCALE_DIR + "summernote-zh-CN.js")
     TextResource zh_CN();
 
-    @Source("resources/js/locales.cache.0.6.16/summernote-zh-TW.js")
+    @Source(LOCALE_DIR + "summernote-zh-TW.js")
     TextResource zh_TW();
 }
